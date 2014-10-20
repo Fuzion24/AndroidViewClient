@@ -317,7 +317,7 @@ class View:
         ''' The height property depending on the View attribute format '''
         self.isFocusedProperty = None
         ''' The focused property depending on the View attribute format '''
-        
+
         if version >= 16 and self.useUiAutomator:
             self.idProperty = ID_PROPERTY_UI_AUTOMATOR
             self.textProperty = TEXT_PROPERTY_UI_AUTOMATOR
@@ -374,7 +374,7 @@ class View:
             self.widthProperty = WIDTH_PROPERTY
             self.heightProperty = HEIGHT_PROPERTY
             self.isFocusedProperty = IS_FOCUSED_PROPERTY
-        
+
     def __getitem__(self, key):
         return self.map[key]
 
@@ -870,15 +870,15 @@ class View:
     def longTouch(self, duration=2000):
         '''
         Long touches this C{View}
-        
+
         @param duration: duration in ms
-        
+
         This workaround was suggested by U{HaMi<http://stackoverflow.com/users/2571957/hami>}
         '''
-        
+
         c = self.getCenter()
         self.device.drag(c, c, duration, 1)
-            
+
     def allPossibleNamesWithColon(self, name):
         l = []
         for i in range(name.count("_")):
@@ -1032,7 +1032,7 @@ class EditText(TextView):
     '''
     EditText class.
     '''
-    
+
     def type(self, text):
         self.touch()
         time.sleep(0.5)
@@ -2574,7 +2574,7 @@ class CulebraOptions:
     '''
     Culebra options helper class
     '''
-    
+
     HELP = 'help'
     VERBOSE = 'verbose'
     VERSION = 'version'
