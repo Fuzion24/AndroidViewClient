@@ -212,9 +212,11 @@ class AdbClient:
         # HACK: MSG_WAITALL not available on windows
         #version = self.socket.recv(8, socket.MSG_WAITALL)
         version = self.__readExactly(self.socket, 8)
-        VERSION = '00040020'
-        if version != VERSION and not ignoreversioncheck:
-            raise RuntimeError("ERROR: Incorrect ADB server version %s (expecting %s)" % (version, VERSION))
+
+        valid_adb_versions = ["00040020", "0004001f"]
+
+        if not (version in valid_adb_versions) and not ignoreversioncheck:
+            raise RuntimeError("ERROR: Incorrect ADB server version %s (expecting %s)" % (version, valid_adb_versions))
         if reconnect:
             self.__connect()
 
